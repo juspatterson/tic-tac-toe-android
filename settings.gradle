@@ -1,0 +1,2 @@
+rootProject.name = "emoji Tic Tac Tow"
+include ':app'
