@@ -3,8 +3,11 @@ package app.emojitictactow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.RelativeLayout
+import android.widget.TextView
 import com.vanniktech.emoji.EmojiEditText
 import com.vanniktech.emoji.EmojiPopup
 
@@ -14,25 +17,48 @@ class ChooseEmojiPlayer2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getSupportActionBar()?.hide()
         setContentView(R.layout.activity_choose_emoji_player2)
-
-        val numberOfPlayers = intent.getStringExtra("numberOfPlayers")
-        println(numberOfPlayers)
-        val test = intent.getStringExtra("emojiPlayer1")
 
         val editText: EmojiEditText = findViewById(R.id.EmojiEditTextPLayer2)
 
+        setTitle()
         setUpEmojiTextView(editText)
+        startButton(editText)
 
     }
 
-    private fun startButton(editText: EmojiEditText){
-        val buttonPlayer2 = findViewById(R.id.button_start_game) as Button
-        buttonPlayer2.setOnClickListener {
-            val chooseEmoji2 = Intent(this, ChooseEmojiPlayer1::class.java)
-            chooseEmoji2.putExtra("emojiPlayer2", editText.text.toString())
-            startActivity(chooseEmoji2)
+    private fun setTitle(){
+        val numberOfPlayers = intent.getStringExtra("numberOfPlayers")
+
+        if (numberOfPlayers.equals("2")){
+            val titleChooseEmojiPlayer2 = findViewById(R.id.title_choose_emoji_player2) as TextView
+            titleChooseEmojiPlayer2.text = "Choose emoji for\n Computer"
         }
+    }
+
+    private fun startButton(editText: EmojiEditText){
+        val buttonStartGame = findViewById(R.id.button_start_game) as Button
+
+        buttonStartGame.setOnClickListener {
+            //change to game screen
+            val ticTacTowGame = Intent(this, TicTacTowGame::class.java)
+            ticTacTowGame.putExtra("emojiPlayer2", editText.text.toString())
+            ticTacTowGame.putExtra("emojiPlayer1", intent.getStringExtra("emojiPlayer1"))
+            startActivity(ticTacTowGame)
+        }
+
+        buttonStartGame.isEnabled = false
+        editText.addTextChangedListener(object: TextWatcher {
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+                buttonStartGame.isEnabled = s.toString().trim{ it <= ' ' }.isNotEmpty()
+            }
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int,
+                                           after:Int) {
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
     }
 
     private fun setUpEmojiTextView(editText: EmojiEditText){

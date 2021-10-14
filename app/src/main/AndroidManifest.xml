@@ -10,8 +10,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.EmojiTicTacTow">
-        <activity android:name=".ChooseEmojiPlayer2"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity android:name=".TicTacTowGame">
+        </activity>
+        <activity
+                android:name=".ChooseEmojiPlayer2"
+                android:windowSoftInputMode="stateVisible|adjustResize">
         </activity>
         <activity
                 android:name=".ChooseEmojiPlayer1"

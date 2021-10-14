@@ -2,4 +2,7 @@
     <string name="app_name">emoji Tic Tac Tow</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="hint" >
+        <font size="20">tap here</font>
+    </string>
 </resources>
