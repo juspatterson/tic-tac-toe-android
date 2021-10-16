@@ -4,6 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/customGreen</item>
         <item name="colorPrimaryVariant">@color/customGreen</item>
+        <item name="android:listDivider">@color/customGreen</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

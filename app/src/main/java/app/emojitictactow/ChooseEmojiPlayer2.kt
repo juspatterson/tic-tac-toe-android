@@ -31,7 +31,7 @@ class ChooseEmojiPlayer2 : AppCompatActivity() {
     private fun setTitle(){
         val numberOfPlayers = intent.getStringExtra("numberOfPlayers")
 
-        if (numberOfPlayers.equals("2")){
+        if (numberOfPlayers.equals("1")){
             val titleChooseEmojiPlayer2 = findViewById(R.id.title_choose_emoji_player2) as TextView
             titleChooseEmojiPlayer2.text = "Choose emoji for\n Computer"
         }
@@ -41,9 +41,9 @@ class ChooseEmojiPlayer2 : AppCompatActivity() {
         val buttonStartGame = findViewById(R.id.button_start_game) as Button
 
         buttonStartGame.setOnClickListener {
-            //change to game screen
             val ticTacTowGame = Intent(this, TicTacTowGame::class.java)
             ticTacTowGame.putExtra("emojiPlayer2", editText.text.toString())
+            ticTacTowGame.putExtra("numberOfPlayers",intent.getStringExtra("numberOfPlayers"))
             ticTacTowGame.putExtra("emojiPlayer1", intent.getStringExtra("emojiPlayer1"))
             startActivity(ticTacTowGame)
         }

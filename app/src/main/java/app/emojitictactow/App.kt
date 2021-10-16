@@ -9,6 +9,7 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         EmojiManager.install(IosEmojiProvider())
+
         //Parse SDK stuff goes here
     }
 }
